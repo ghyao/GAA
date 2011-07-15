@@ -34,7 +34,7 @@ runMapping contigs.bases.newb *.sff
 
 Above will generate 454PairStatus.txt.
 
-head 454PairStatus.txt
+$ head 454PairStatus.txt
 Template	Status	Distance	Left Accno	Left Pos	Left Dir	Right Accno	Right Pos	Right Dir	Left Distance	Right Distance
 FC3FKPP01BUVA8	TruePair	3967	Contig18.13	24188	-	Contig18.13	20221	+		
 FC3FKPP01BTJNG	TruePair	3820	Contig23.11	44530	+	Contig23.11	48350	-		

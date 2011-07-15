@@ -66,8 +66,8 @@ Run gaa.pl without any parameter, it will print below usage on the screen.
     	--query|-q 		<query.fa> 		 : query  consensus file, the contig names should be in the format of >Contig1.1
     	
 The following options are optional.
-    	--target-qual|-T 	<target.qual.fa> 	 : target quality file
-    	--query-qual|-Q 	<query.qual.fa> 	 : query quality file
+    	--target-qual|-T 	<target.qual>	 	 : target quality file
+    	--query-qual|-Q 	<query.qual> 	 	 : query quality file
 	--target_gap|-g         <target gap file>	 : e.g. gap.txt for Newbler
 	--query_gap|-G          <query gap file>	 : e.g. gap.txt for Newbler
     	--match|-m 		<alignment.psl>          : blat target.fa query.fa -fastMap query_vs_target.psl
@@ -87,14 +87,56 @@ The following options are optional.
 EXAMPLES
 ========
 
-> ./gaa.pl -t newbler.fa -q cabog.fa
+$ ./gaa.pl -t newbler.fa -q cabog.fa
 Merge newbler.fa and cabog.fa, and output newbler.fa_n_cabog.fa as the merged assembly to:
 
-> ./gaa.pl -t newbler.fa -q cabog.fa -T newbler.qual -Q cabog.qual
+$ ./gaa.pl -t newbler.fa -q cabog.fa -T newbler.qual -Q cabog.qual
 Also generate a quality file (newbler.qual_n_cabog.qual) for the merged assembly.
 
-> ./gaa.pl -t newbler.fa -q cabog.fa -t newbler.gap
+$ ./gaa.pl -t newbler.fa -q cabog.fa -t newbler.gap
 Generate the gap file (g.gap) for merged assembly.
+
+$ head target.fa
+>Contig0.1
+AAGgAAGCAAATtAtAAAaCtAaaGCATTAAAGATATACACATAAAAATGAAGTACTAAA
+TTTATCAAGACAAAAaGCCCTGTCCAAATTGTACTATTGTCCAACTTGTACCACTTTACC
+>Contig0.2
+CCCTAAATTGAGAAAAaTAACTTTAGGGAATATATCAATGTACAGTGCCCGCTTCGTTAT
+TCGGGAGAGAAATTCGAAAAAGTTAAAATAACATTCCGGAAATGTTAATTTTACCCTGCA
+>Contig0.3
+GTATTGATCCAAAATCGGTGTAAATATTACCCTTTTTAGGTGTATTAGGTGTTAAATGTA
+TCCTTTTTCATGTTAATTTTACCCTTAATAAGGTGTAAAATTAACATTAAAAAATGTTGA
+TATATTTTTACACCTAAAAAGTGTTAAATTTCTGAGGAAAAATGTTAATCGCACCCTCTT
+
+$ head target.qual
+>Contig0.1
+64 64 64 26 64 64 64 64 64 64 50 64 26 64 16 64 64 64 22 64 39 64 
+39 39 64 64 55 64 64 64 64 64 64 64 64 64 64 64 64 48 64 64 64 64 
+64 64 64 49 45 64 64 64 64 64 64 64 64 64 64 32 64 64 64 64 64 64 
+
+$ head gap.txt
+Contig0.1 20
+Contig0.2 811
+Contig0.3 932
+Contig0.4 876
+Contig0.5 1927
+Contig0.6 1730
+Contig0.7 20
+Contig1.1 171
+Contig1.2 402
+Contig1.3 1382
+
+$ head 454PairStatus.txt
+Template	Status	Distance	Left Accno	Left Pos	Left Dir	Right Accno	Right Pos	Right Dir	Left Distance	Right Distance
+FC3FKPP01BUVA8	TruePair	3967	Contig18.13	24188	-	Contig18.13	20221	+		
+FC3FKPP01BTJNG	TruePair	3820	Contig23.11	44530	+	Contig23.11	48350	-		
+FC3FKPP01AFDGW	TruePair	2498	Contig41.19	5103	-	Contig41.19	2605	+		
+FC3FKPP01CEJ64	TruePair	2498	Contig41.19	5103	-	Contig41.19	2605	+		
+FC3FKPP01E3K7I	TruePair	3735	Contig117.3	98721	-	Contig117.3	94986	+		
+FC3FKPP01A7AS8	FalsePair	-	Contig129.5	2438	+	Contig129.6	1986	-	276	1986
+FC3FKPP01BJX6Q	FalsePair	-	Contig133.3	28972	+	Contig140.4	1428	-	5803	1428
+FC3FKPP01AWH9A	TruePair	2636	Contig40.10	122575	+	Contig40.10	125211	-		
+FC3FKPP01DCED4	MultiplyMapped	-	Contig18.9	1244	-	Repeat		
 
 
 CONTACT
